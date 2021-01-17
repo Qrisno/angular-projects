@@ -97,7 +97,6 @@ export class FormComponent implements OnInit {
     });
     this.editClick = true;
     this.num = i;
-    // this.userList.splice(i, 1);
   }
   delete(i:number){
     let valid = confirm(`This action will remove an user with the email:${this.users[i].email}, Are u sure?`);

@@ -13,11 +13,10 @@ import {
   styleUrls: ["./form.component.scss"]
 })
 export class FormComponent implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
   users:Array<object> = [];
-  user:object={};
-  editClick:boolean;
-  num:number;
+  editClick:boolean = false;
+  num!: number;
   constructor(private fb:FormBuilder) {
   }
   

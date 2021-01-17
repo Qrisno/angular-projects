@@ -1,35 +1,21 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+const express = require('express');
+const http = require('http');
+const app = express();
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  });
+// Set name of directory where angular distribution files are stored
+const dist = '../../angularForm';
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+// Set port
+const port = process.env.PORT || 4201;
 
-  it(`should have as title 'angularForm'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angularForm');
-  });
+// Serve static assets
+app.get('*.*', express.static(dist, { maxAge: '1y' }));
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angularForm app is running!');
-  });
+// Serve application paths
+app.all('*', function (req, res) {
+  res.status(200).sendFile(`/`, { root: dist });
 });
+
+// Create server to listen for connections
+const server = http.createServer(app);
+server.listen(port, () => console.log("Node Express server for " + app.name + " listening on port " + port));

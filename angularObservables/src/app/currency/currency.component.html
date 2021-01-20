@@ -35,9 +35,9 @@
       <option value="EUR">EUR</option>
     </select>
     <input type="number" #inputone [(ngModel)]="firstValue" (input)="shoot()">
-    <button (click)='click(inputone.value, selectval.value)'>ADD</button>
+    <button (click)='click(inputone.value, selectval.value, selectVal2.value)'>ADD</button>
     <input [disabled]='dis()' type="number" [(ngModel)]="secondValue" (input)="shootBack()">
-    <select [(ngModel)]="option2" (ngModelChange)="shootBack()">
+    <select #selectVal2 [(ngModel)]="option2" (ngModelChange)="shootBack()">
     <option value="CAD">CAD</option>
     <option value="HKD">HKD</option>
     <option value="ISK">ISK</option>
@@ -111,8 +111,8 @@
             <option value="EUR">EUR</option>
           </select>
         <input type="number" #inputone (input)="shoot()">
-        <button (click)='click(inputone.value, selectval.value)'>GENERATE SUM</button>
+        <button (click)='click(inputone.value, selectval.value, selectVal2.value)'>GENERATE SUM</button>
 
     </form>
-    <p>TOTAL SUM IN EUROS: {{totalSum}}</p>
+
 </div>

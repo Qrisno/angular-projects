@@ -52,11 +52,11 @@ export class CurrencyComponent {
  dis(){
     return this.bool;
   }
-  click(i:any, b:any){
-    let cur = this.currency(b,'EUR');
+  click(i:any, b:any, c:any){
+    let cur = this.currency(b,c);
     cur.subscribe(
       (b:any)=>{
-        let value:number =parseFloat((parseInt(i)*b.rates['EUR']).toFixed(2));
+        let value:number =parseFloat((parseInt(i)*b.rates[c]).toFixed(2));
         if(isNaN(value)){
           value=0;
         }

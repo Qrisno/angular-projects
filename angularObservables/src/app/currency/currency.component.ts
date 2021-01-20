@@ -16,6 +16,7 @@ export class CurrencyComponent {
   currenciesArr= new FormArray([]);
   totalSum: number=0;
   control:any;
+  bool!: boolean;
 
 
   constructor(private httpClient: HttpClient) { }
@@ -48,7 +49,9 @@ export class CurrencyComponent {
     })
     
   }
- 
+ dis(){
+    return this.bool;
+  }
   click(i:any, b:any){
     let cur = this.currency(b,'EUR');
     cur.subscribe(
@@ -64,6 +67,7 @@ export class CurrencyComponent {
         if(value !==0 ){
           this.currenciesArr.push(this.control);
           this.totalSum+=value;
+          this.bool=true;
           this.secondValue=this.totalSum;
         }
        

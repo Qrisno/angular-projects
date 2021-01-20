@@ -36,7 +36,7 @@
     </select>
     <input type="number" #inputone [(ngModel)]="firstValue" (input)="shoot()">
     <button (click)='click(inputone.value, selectval.value)'>ADD</button>
-    <input type="number" [(ngModel)]="secondValue" (input)="shootBack()">
+    <input [disabled]='dis()' type="number" [(ngModel)]="secondValue" (input)="shootBack()">
     <select [(ngModel)]="option2" (ngModelChange)="shootBack()">
     <option value="CAD">CAD</option>
     <option value="HKD">HKD</option>
